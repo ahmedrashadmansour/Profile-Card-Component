@@ -1,0 +1,219 @@
+/* CSS Rest */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+  display: inline-block;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  border: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: "Courier New", Courier, monospace;
+}
+/* End Css Rest */
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  --s: 198px; /* control the size*/
+  --c1: #1d1d1d;
+  --c2: #4e4f51;
+  --c3: #3c3c3c;
+
+  background: repeating-conic-gradient(
+        from 30deg,
+        #0000 0 120deg,
+        var(--c3) 0 180deg
+      )
+      calc(0.5 * var(--s)) calc(0.5 * var(--s) * 0.577),
+    repeating-conic-gradient(
+      from 30deg,
+      var(--c1) 0 60deg,
+      var(--c2) 0 120deg,
+      var(--c3) 0 180deg
+    );
+  background-size: var(--s) calc(var(--s) * 0.577);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 1rem;
+  min-width: 35rem;
+  overflow: hidden;
+  background-color: #fff;
+  box-shadow: 10px 5px 5px black;
+}
+
+.top {
+  height: 10rem;
+
+  --s: 10px; /* control the size*/
+  --c1: #f8e4c1;
+  --c2: #8b8c8d;
+
+  --c: #0000 75%, var(--c1) 0;
+  --g1: conic-gradient(at 78% 3%, var(--c));
+  --g2: conic-gradient(at 3% 78%, var(--c));
+  background: var(--g1), var(--g1) var(--s) var(--s),
+    var(--g1) calc(2 * var(--s)) calc(2 * var(--s)),
+    var(--g1) calc(3 * var(--s)) calc(3 * var(--s)),
+    var(--g2) 0 calc(3 * var(--s)), var(--g2) var(--s) 0,
+    var(--g2) calc(2 * var(--s)) var(--s),
+    var(--g2) calc(3 * var(--s)) calc(2 * var(--s)) var(--c2);
+  background-size: calc(4 * var(--s)) calc(4 * var(--s));
+}
+
+/* middle */
+.pic {
+  width: 12rem;
+  height: 12rem;
+  border-radius: 50%;
+  z-index: 1;
+  margin-top: -6rem;
+  border: 0.4rem solid #fff;
+}
+
+.middle {
+  position: relative;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.title {
+  font-size: 2.2rem;
+}
+
+.profession {
+  font-size: 1.6rem;
+}
+
+/* end middle */
+
+/* Bottom */
+
+.bottom {
+  display: flex;
+  border-top: 0.1rem solid #c4c4c4;
+  margin-top: 3rem;
+}
+.column {
+  padding: 1.8rem 1.5rem;
+  text-align: center;
+  flex: 1;
+}
+
+.icon {
+  width: 2rem;
+  height: 2rem;
+}
+
+.username {
+  font-size: 1.2rem;
+}
+.column:nth-child(2) {
+  border-right: 0.1rem solid #c4c4c4;
+  border-left: 0.1rem solid #c4c4c4;
+}
+
+.links:hover {
+  transition: 0.3s;
+  transform: scale(1.25);
+}
+
+/* lights control toggel */
+.lights-control {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: absolute;
+  top: 2rem;
+  font-size: large;
+  color: #fff;
+  font-weight: bolder;
+}
+
+.lights-input {
+  display: none;
+}
+
+.lights-label {
+  width: 4.5rem;
+  height: 2.2rem;
+  background-color: #fff;
+  border-radius: 1.5rem;
+  display: block;
+  padding: 0.16rem 0.2rem;
+  transition: background-color 0.3s;
+  cursor: pointer;
+}
+
+.lights-label::after {
+  content: "";
+  width: 2rem;
+  height: 2rem;
+  background-color: black;
+  display: block;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+
+.lights-input:checked + .lights-label {
+  background-color: green;
+}
+
+.lights-input:checked + .lights-label::after {
+  background-color: red;
+  transform: translateX(2.1rem);
+}
+
+/* lights */
+.lights {
+  position: absolute;
+  z-index: 2;
+  display: none;
+}
+
+.bulb-odd {
+  animation: party 0.5s infinite alternate;
+}
+
+.bulb-even {
+  animation: party 0.5s infinite alternate-reverse;
+}
+@keyframes party {
+  from {
+    fill: #ff1111;
+  }
+  to {
+    fill: #f3ea19;
+  }
+}
+
+.container:has(.lights-input:checked) .lights {
+  display: block;
+}
+/* end lights */
